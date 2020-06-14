@@ -1,0 +1,14 @@
+RUN: 
+
+python -m smtpd -n -c DebuggingServer localhost:1025
+
+this will make a loacal smtp server on which you can check the email sent 
+from django
+
+however, there is one thing to notice, django's reset password works only
+iff the email is actually associated with any user in the user table
+otherwise it won't work, but it will show the password_reset_dont still.
+
+won't work :
+if the email is not associated with any account
+if the email entered is wrong
